@@ -1,0 +1,25 @@
+# Godot 4 specific
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+*.translation
+
+# Python
+yolo_env/
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+
+# YOLO model artifacts (optional - large files)
+yolov8n.pt
+*.onnx

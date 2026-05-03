@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://bli7p4jgrdiny"]
+
+[ext_resource type="Script" uid="uid://geafii5cja2y" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dwqvm06h3t3id" path="res://low_poly_whiskey_bottle__2_label_variants.glb" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://cbx5hxs7minep" path="res://drone_cam.gd" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://drmkxhb820l1n" path="res://old_room.glb" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://0qkj5jhnpf8d" path="res://person.glb" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cep5t2pu0y81d" path="res://office_chair.glb" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://b2phax5jdqkxe" path="res://traffic_light.glb" id="7_5vw27"]
+[ext_resource type="PackedScene" uid="uid://di1lyp5gxqmvb" path="res://stop_sign.glb" id="7_272bh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_h2yge"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1bvp3"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0xm2m"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
+radius = 0.5136719
+height = 2.038086
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+ambient_light_source = 2
+ambient_light_color = Color(0.9672143, 0.9051676, 0.7388975, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4c57u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kek77"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5vw27"]
+radius = 1.1650391
+height = 14.718872
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5vw27"]
+
+[node name="Main" type="Node3D" unique_id=1069058150]
+script = ExtResource("1_ig7tw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=385275446]
+transform = Transform3D(0.70710677, -0.49999994, 0.5, 0, 0.70710677, 0.7071067, -0.70710677, -0.49999994, 0.5, 0, 11.581328, 0)
+
+[node name="Box_1" type="Node3D" parent="." unique_id=676354916]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Box_1" unique_id=1754435745]
+mesh = SubResource("BoxMesh_7dm0k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Box_1" unique_id=1232759447]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Box_1/StaticBody3D" unique_id=2145905551]
+shape = SubResource("BoxShape3D_ig7tw")
+
+[node name="Cylinder_1" type="Node3D" parent="." unique_id=1380623393]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cylinder_1" unique_id=1914635824]
+mesh = SubResource("CylinderMesh_h2yge")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cylinder_1" unique_id=113625816]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cylinder_1/StaticBody3D" unique_id=1014965259]
+shape = SubResource("CylinderShape3D_1bvp3")
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1516913053]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_0xm2m")
+
+[node name="Bottle" parent="." unique_id=403225760 instance=ExtResource("2_0xm2m")]
+transform = Transform3D(-8.742278e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.742278e-09, 0, 0.83, 1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Bottle" unique_id=825587988]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bottle/StaticBody3D" unique_id=1970760492]
+transform = Transform3D(13.63, 0, 0, 0, 13.63, 0, 0, 0, 13.63, 0, -2.6953874, 0)
+shape = SubResource("CapsuleShape3D_0xm2m")
+
+[node name="DroneCam" type="Node3D" parent="." unique_id=1664596804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 6)
+script = ExtResource("3_h2yge")
+
+[node name="Camera3D" type="Camera3D" parent="DroneCam" unique_id=441808330]
+transform = Transform3D(1, 0, 0, 0, 0.9659259, 0.25881907, 0, -0.25881907, 0.9659258, 0, 0, 0)
+current = true
+
+[node name="Room" parent="." unique_id=738141877 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, -0.34, 0, -40)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1980301017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+light_color = Color(0.8982945, 0.57407266, 0.26712844, 1)
+light_energy = 2.113
+omni_range = 4096.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1719869987]
+environment = SubResource("Environment_1bvp3")
+
+[node name="Chair" parent="." unique_id=1153775756 instance=ExtResource("6_7mycd")]
+transform = Transform3D(-1.889117, 0, -6.942569, 0, 7.1949997, 0, 6.942569, 0, -1.889117, 11.949935, 4.35, -0.6016555)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Chair" unique_id=1756326721]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair/StaticBody3D" unique_id=80415591]
+transform = Transform3D(1, 0, 0, 0, 1.5249999, 0, 0, 0, 1, 0, 0.07999998, 0)
+shape = SubResource("BoxShape3D_4c57u")
+
+[node name="StopSign" parent="." unique_id=1024429340 instance=ExtResource("7_272bh")]
+transform = Transform3D(-10.883887, 0, 17.830679, 0, 20.89, 0, -17.830679, 0, -10.883887, -14.394783, 0, 21.961689)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StopSign" unique_id=1052347649]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StopSign/StaticBody3D" unique_id=775010897]
+transform = Transform3D(0.295, 0, 0, 0, 1.04, 0, 0, 0, 0.295, 0, 0.30447438, 0)
+shape = SubResource("BoxShape3D_kek77")
+
+[node name="TrafficLight" parent="." unique_id=1336023604 instance=ExtResource("7_5vw27")]
+transform = Transform3D(0.018049426, 0, -0.06244372, 0, 0.065, 0, 0.06244372, 0, 0.018049426, -2.0689738, 0, -18.48663)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TrafficLight" unique_id=113702254]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TrafficLight/StaticBody3D" unique_id=155760467]
+transform = Transform3D(23.005013, 0, -2.861023e-06, 0, 23.005, 0, 2.861023e-06, 0, 23.005013, 17.724548, 162.59634, -2.2235985)
+shape = SubResource("CapsuleShape3D_5vw27")
+
+[node name="Person" parent="." unique_id=1946712820 instance=ExtResource("5_lquwl")]
+transform = Transform3D(-6.6148305, 2.2575598, -5.9119635, 1.8822215e-07, 8.552119, 3.2657385, 6.3283386, 2.359762, -6.1796017, 5.342663, 7.764137, 22.778503)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Person" unique_id=1338927801]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Person/StaticBody3D" unique_id=601538062]
+transform = Transform3D(1, 1.4901161e-08, -2.9802322e-08, -1.4901161e-08, 1, 1.4901161e-08, 2.9802322e-08, 1.4901161e-08, 1, 0, -0.052653432, -0.020106316)
+shape = SubResource("BoxShape3D_5vw27")
+
+[node name="Label" type="Label" parent="." unique_id=448032791]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 24
+text = "FPS: 0"
+
+[editable path="Bottle"]
+[editable path="Chair"]
+[editable path="StopSign"]
+[editable path="TrafficLight"]
+[editable path="Person"]
